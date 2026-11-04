@@ -1,69 +1,185 @@
+import { Footer } from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
+import { Button } from "@/components/ui/Button";
+import { Quality } from "@/components/ui/Quality";
+import { ToolCard } from "@/components/ui/ToolCard";
+import {
+  ArrowRight,
+  Crop,
+  Gift,
+  Monitor,
+  Search,
+  ShieldCheck,
+  Zap,
+} from "lucide-react";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <div className="bg-linear-to-br min-h-screen flex flex-col from-[#0B1429] to-[#050B1A]">
+      <Header page="home" />
+
+      <main className="flex flex-col gap-10 flex-1">
+        <section className="font-inter grid lg:flex items-center text-center lg:justify-evenly gap-10">
+          <div className="flex flex-col gap-10 mt-20 items-center lg:items-start lg:pl-4">
+            <h1 className="text-4xl sm:text-6xl lg:text-5xl xl:text-6xl text-white font-bold flex-col text-center lg:text-left">
+              <span className="bg-linear-to-r from-[#6938F5] to-[#356BFF] bg-clip-text text-transparent">
+                Ferramentas
+              </span>{" "}
+              online <br />
+              para facilitar o seu dia!
+            </h1>
+
+            <div className="text-center lg:text-left">
+              <p className="text-muted">
+                Utilitários rápidos, gratuítos, e sem necessidade de instalação.
+              </p>
+              <p className="text-muted">
+                Tudo o que você precisa em um só lugar!
+              </p>
+            </div>
+
+            <form className="border border-muted/30 rounded-xl w-75 sm:w-180 lg:w-140 xl:w-190 h-12 items-center flex justify-between bg-card">
+              <div className="flex flex-1 items-center gap-2 px-4">
+                <Search className="text-muted" size={20} />
+
+                <input
+                  className="w-full text-xs sm:text-base outline-0 text-foreground placeholder-muted"
+                  type="text"
+                  placeholder="Busque por uma ferramenta..."
+                />
+              </div>
+
+              <Button variant="search" rounded="xl" size="search">
+                Buscar
+              </Button>
+            </form>
+          </div>
+          <div className="flex justify-center">
             <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+              className="pt-4 w-100 sm:w-120 lg:w-140 xl:w-190 h-auto"
+              src="/images/computer.png"
+              alt="Computer"
+              width={800}
+              height={800}
+              draggable={false}
+            ></Image>
+          </div>
+        </section>
+
+        <section className="flex justify-center items-center">
+          <div className="w-[80%] sm:w-[95%] grid sm:flex font-inter gap-4 sm:gap-6 justify-center xl:justify-evenly  bg-card border border-muted/30 py-6 rounded-2xl">
+            <Quality
+              icon={Zap}
+              title="Rápido e fácil"
+              description="Use em segundos"
+            ></Quality>
+
+            <hr className="bg-muted/30 w-55 h-0.5 sm:w-0.5 sm:h-20 sm:rotate-180" />
+
+            <Quality
+              icon={ShieldCheck}
+              title="Seguro"
+              description="Seus dados protegidos"
+            ></Quality>
+
+            <hr className="bg-muted/30 w-55 h-0.5 sm:w-0.5 sm:h-20 sm:rotate-180" />
+
+            <Quality
+              icon={Monitor}
+              title="100% Online"
+              description="Sem instalação"
+            ></Quality>
+
+            <hr className="bg-muted/30 w-55 h-0.5 sm:w-0.5 sm:h-20 sm:rotate-180" />
+
+            <Quality
+              icon={Gift}
+              title="Gratuito"
+              description="Sempre grátis"
+            ></Quality>
+          </div>
+        </section>
+
+        <section className="font-inter gap-10 flex flex-col">
+          <div className="flex flex-col text-center justify-center xl:justify-between xl:mx-12 gap-6 sm:flex-row sm:justify-evenly items-center">
+            <h2 className="text-foreground text-3xl font-bold">
+              Principais Ferramentas
+            </h2>
+
+            <Button
+              className="flex gap-2 items-center"
+              variant="outline"
+              rounded="full"
+              size="responsive"
+            >
+              Ver todas as ferramentas <ArrowRight />
+            </Button>
+          </div>
+
+          <div className="flex justify-center">
+            <div className="grid sm:grid-cols-4 grid-cols-2 gap-4">
+              <ToolCard
+                title="Recortar imagem"
+                description="Recorte suas imagens com precisão"
+                color="red"
+                icon={Crop}
+              ></ToolCard>
+
+              <ToolCard
+                title="Seletor de cores"
+                description="Acesse o seletor de cores e escolha sua cor de preferência"
+                color="green"
+                icon={Crop}
+              ></ToolCard>
+
+              <ToolCard
+                title="Gerador de senhas"
+                description="Gere senhas seguras de acordo com informações fornecidas"
+                color="purple"
+                icon={Crop}
+              ></ToolCard>
+
+              <ToolCard
+                title="Calculadora Online"
+                description="Realize cálculos matemáticos básicos e avançados"
+                color="pink"
+                icon={Crop}
+              ></ToolCard>
+
+              <ToolCard
+                title="Gerador de QR Code"
+                description="Gere um QR Code de acordo com informações fornecidas"
+                color="blue"
+                icon={Crop}
+              ></ToolCard>
+
+              <ToolCard
+                title="Compactador de arquivos"
+                description="Reduz o tamanho de arquivos"
+                color="cyan"
+                icon={Crop}
+              ></ToolCard>
+
+              <ToolCard
+                title="Gerador de números"
+                description="Gere números aleatórios de acordo com informações fornecidas"
+                color="orange"
+                icon={Crop}
+              ></ToolCard>
+
+              <ToolCard
+                title="Contador de caracteres"
+                description="Calcule quantos caracteres existem no texto"
+                color="violet"
+                icon={Crop}
+              ></ToolCard>
+            </div>
+          </div>
+        </section>
       </main>
+
+      <Footer />
     </div>
   );
 }
