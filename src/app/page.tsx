@@ -31,21 +31,7 @@ export default function Home() {
         opacity: 100,
       });
 
-      SplitText.create(".title", {
-        type: "words, chars",
-        mask: "lines",
-        autoSplit: true,
-        onSplit(self) {
-          return gsap.from(self.chars, {
-            duration: 1,
-            y: 100,
-            autoAlpha: 0,
-            stagger: 0.05,
-          });
-        },
-      });
-
-      SplitText.create(".paragraph", {
+      SplitText.create(".paragraph, .title", {
         type: "lines, words, chars",
         mask: "lines",
         autoSplit: true,
@@ -93,7 +79,7 @@ export default function Home() {
       <main className="flex flex-col gap-10 flex-1">
         <section className="font-inter grid lg:flex items-center text-center lg:justify-evenly gap-10">
           <div className="flex flex-col gap-10 mt-20 items-center lg:items-start lg:pl-4">
-            <h1 className="paragraph text-4xl sm:text-6xl lg:text-5xl xl:text-6xl text-white font-bold flex-col text-center lg:text-left">
+            <h1 className="title text-4xl sm:text-6xl lg:text-5xl xl:text-6xl text-white font-bold flex-col text-center lg:text-left">
               <span className="bg-linear-to-r from-[#6938F5] to-[#356BFF] bg-clip-text text-transparent">
                 Ferramentas
               </span>{" "}
