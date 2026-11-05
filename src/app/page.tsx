@@ -1,8 +1,11 @@
+"use client";
+
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { Button } from "@/components/ui/Button";
 import { Quality } from "@/components/ui/Quality";
 import { ToolCard } from "@/components/ui/ToolCard";
+import gsap from "gsap";
 import {
   ArrowRight,
   Crop,
@@ -13,8 +16,76 @@ import {
   Zap,
 } from "lucide-react";
 import Image from "next/image";
+import { useLayoutEffect } from "react";
+import { SplitText } from "gsap/SplitText";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function Home() {
+  useLayoutEffect(() => {
+    gsap.registerPlugin(SplitText);
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      gsap.to(".image", {
+        y: 0,
+        opacity: 100,
+      });
+
+      SplitText.create(".title", {
+        type: "words, chars",
+        mask: "lines",
+        autoSplit: true,
+        onSplit(self) {
+          return gsap.from(self.chars, {
+            duration: 1,
+            y: 100,
+            autoAlpha: 0,
+            stagger: 0.05,
+          });
+        },
+      });
+
+      SplitText.create(".paragraph", {
+        type: "lines, words, chars",
+        mask: "lines",
+        autoSplit: true,
+        onSplit(self) {
+          return gsap.from(self.lines, {
+            duration: 1,
+            y: 100,
+            autoAlpha: 0,
+            stagger: {
+              amount: 0.5,
+              from: "start",
+            },
+          });
+        },
+      });
+
+      gsap.utils.toArray<HTMLElement>(".tool-card").forEach((card) => {
+        gsap.fromTo(
+          card,
+          {
+            autoAlpha: 0,
+            y: 30,
+          },
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.6,
+            ease: "elastic.in",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 100%",
+              toggleActions: "play none none none",
+            },
+          },
+        );
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
   return (
     <div className="bg-linear-to-br min-h-screen flex flex-col from-[#0B1429] to-[#050B1A]">
       <Header page="home" />
@@ -22,7 +93,7 @@ export default function Home() {
       <main className="flex flex-col gap-10 flex-1">
         <section className="font-inter grid lg:flex items-center text-center lg:justify-evenly gap-10">
           <div className="flex flex-col gap-10 mt-20 items-center lg:items-start lg:pl-4">
-            <h1 className="text-4xl sm:text-6xl lg:text-5xl xl:text-6xl text-white font-bold flex-col text-center lg:text-left">
+            <h1 className="paragraph text-4xl sm:text-6xl lg:text-5xl xl:text-6xl text-white font-bold flex-col text-center lg:text-left">
               <span className="bg-linear-to-r from-[#6938F5] to-[#356BFF] bg-clip-text text-transparent">
                 Ferramentas
               </span>{" "}
@@ -31,10 +102,10 @@ export default function Home() {
             </h1>
 
             <div className="text-center lg:text-left">
-              <p className="text-muted">
+              <p className="paragraph text-muted">
                 Utilitários rápidos, gratuítos, e sem necessidade de instalação.
               </p>
-              <p className="text-muted">
+              <p className="paragraph text-muted">
                 Tudo o que você precisa em um só lugar!
               </p>
             </div>
@@ -57,7 +128,7 @@ export default function Home() {
           </div>
           <div className="flex justify-center">
             <Image
-              className="pt-4 w-100 sm:w-120 lg:w-140 xl:w-190 h-auto"
+              className="image pt-4 w-100 sm:w-120 lg:w-140 xl:w-190 h-auto translate-y-10 opacity-0"
               src="/images/computer.png"
               alt="Computer"
               width={800}

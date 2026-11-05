@@ -1,4 +1,6 @@
 import { ArrowRight, LucideIcon } from "lucide-react";
+import { useRef } from "react";
+import gsap from "gsap";
 
 interface IProps {
   title: string;
@@ -9,8 +11,34 @@ interface IProps {
 
 export const ToolCard = (props: IProps) => {
   const { title, description, icon: Icon, color } = props;
+
+  const cardRef = useRef<HTMLButtonElement>(null);
+
+  function handleMouseEnter() {
+    if (!cardRef.current) return;
+
+    gsap.to(cardRef.current, {
+      scale: 1.025,
+      duration: 0.15,
+    });
+  }
+
+  function handleMouseLeave() {
+    if (!cardRef.current) return;
+
+    gsap.to(cardRef.current, {
+      scale: 1,
+      duration: 0.15,
+    });
+  }
+
   return (
-    <button className="bg-card rounded-xl w-35 h-68 flex-col xl:flex-row xl:w-75 xl:h-34 xl:gap-4 justify-between hover:cursor-pointer border border-muted/30 flex items-center p-4 hover:bg-card-hover 2xl:w-92 ">
+    <button
+      ref={cardRef}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className="tool-card opacity-0 bg-card rounded-xl w-35 h-68 flex-col xl:flex-row xl:w-75 xl:h-34 xl:gap-4 justify-between hover:cursor-pointer border border-muted/30 flex items-center p-4 hover:bg-card-hover 2xl:w-92 hover:scale-102 transition-all duration-300"
+    >
       <div
         className="bg-accent-cyan p-2 2xl:p-3 rounded-lg"
         style={{ backgroundColor: color }}

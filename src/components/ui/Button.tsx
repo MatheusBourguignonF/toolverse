@@ -6,12 +6,12 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-linear-to-r from-[#6938F5] to-[#356BFF] text-foreground p-2",
+          "bg-linear-to-r from-[#6938F5] to-[#356BFF] text-foreground p-2 border border-transparent transition-colors hover:border-white/30",
         secondary: "bg-card text-foreground hover:bg-card-hover",
-        outline: "border border-primary text-primary hover:bg-primary/10",
+        outline: "border border-primary text-primary hover:bg-primary/10 active:scale-95 ",
         ghost: "text-foreground hover:bg-card-hover",
         search:
-          "bg-linear-to-r from-[#6938F5] to-[#356BFF] text-foreground p-2",
+          "bg-linear-to-r from-[#6938F5] to-[#356BFF] text-foreground p-2 hover:from-[#356BFF] hover:to-[#6938F5]  transition-colors duration-900",
       },
       size: {
         sm: "px-3 py-1.5 text-sm",
