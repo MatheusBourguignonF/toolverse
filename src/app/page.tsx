@@ -31,21 +31,23 @@ export default function Home() {
         opacity: 100,
       });
 
-      SplitText.create(".paragraph, .title", {
-        type: "lines, words, chars",
-        mask: "lines",
-        autoSplit: true,
-        onSplit(self) {
-          return gsap.from(self.lines, {
-            duration: 1,
-            y: 100,
-            autoAlpha: 0,
-            stagger: {
-              amount: 0.5,
-              from: "start",
-            },
-          });
-        },
+      [".title", ".paragraph"].forEach((selector) => {
+        SplitText.create(selector, {
+          type: "lines, words, chars",
+          mask: "lines",
+          autoSplit: true,
+          onSplit(self) {
+            return gsap.from(self.lines, {
+              duration: 1,
+              y: 100,
+              autoAlpha: 0,
+              stagger: {
+                amount: 0.5,
+                from: "start",
+              },
+            });
+          },
+        });
       });
 
       gsap.utils.toArray<HTMLElement>(".tool-card").forEach((card) => {
