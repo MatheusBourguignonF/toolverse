@@ -1,7 +1,8 @@
 "use client";
 
 import { House, Info, LayoutGrid, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import gsap from "gsap";
 
 interface IProps {
   page: "home" | "tools" | "info";
@@ -10,15 +11,30 @@ interface IProps {
 export const Header = (props: IProps) => {
   const { page } = props;
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const menuRef = useRef<HTMLUListElement>(null);
+  const toggleMenu = () => {
+    if (isOpen) {
+      gsap.to(menuRef.current, {
+        opacity: 0,
+        y: -45,
+        duration: 2.25,
+        ease: "power2.in",
+        onComplete: () => setIsOpen(false),
+      });
+    } else {
+      setIsOpen(true);
+    }
+  };
   return (
-    <header className="flex relative justify-evenly items-center py-4 font-inter">
+    <header className="flex relative justify-evenly items-center py-4 font-inter z-50">
       <h2 className="font-bold text-white text-3xl">
         Tool
         <span className="bg-linear-to-r from-[#6938F5] to-[#356BFF] bg-clip-text text-transparent">
           Verse
         </span>
       </h2>
-      <nav className="text-sm">
+      <nav className="text-sm transition-all duration-900">
         <ul className="hidden sm:flex text-white gap-10 justify-center items-center">
           <li
             className={`flex gap-2 hover:cursor-pointer items-center ${page === "home" ? "bg-primary rounded-full px-4 py-2" : ""}`}
@@ -42,7 +58,7 @@ export const Header = (props: IProps) => {
 
       <button
         className="text-white sm:hidden"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={toggleMenu}
         aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
         aria-expanded={isOpen}
         aria-controls="mobile-menu"

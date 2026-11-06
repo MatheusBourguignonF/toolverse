@@ -31,23 +31,38 @@ export default function Home() {
         opacity: 100,
       });
 
-      [".title", ".paragraph"].forEach((selector) => {
-        SplitText.create(selector, {
-          type: "lines, words, chars",
-          mask: "lines",
-          autoSplit: true,
-          onSplit(self) {
-            return gsap.from(self.lines, {
-              duration: 1,
-              y: 100,
-              autoAlpha: 0,
-              stagger: {
-                amount: 0.5,
-                from: "start",
-              },
-            });
-          },
-        });
+      SplitText.create(".title", {
+        type: "lines, words, chars",
+        mask: "lines",
+        autoSplit: true,
+        onSplit(self) {
+          return gsap.from(self.lines, {
+            duration: 1,
+            y: 100,
+            autoAlpha: 0,
+            stagger: {
+              amount: 0.5,
+              from: "start",
+            },
+          });
+        },
+      });
+
+      SplitText.create(".paragraph", {
+        type: "lines, words, chars",
+        mask: "lines",
+        autoSplit: true,
+        onSplit(self) {
+          return gsap.from(self.lines, {
+            duration: 1,
+            y: 100,
+            autoAlpha: 0,
+            stagger: {
+              amount: 0.5,
+              from: "start",
+            },
+          });
+        },
       });
 
       gsap.utils.toArray<HTMLElement>(".tool-card").forEach((card) => {
@@ -82,7 +97,7 @@ export default function Home() {
         <section className="font-inter grid lg:flex items-center text-center lg:justify-evenly gap-10">
           <div className="flex flex-col gap-10 mt-20 items-center lg:items-start lg:pl-4">
             <h1 className="title text-4xl sm:text-6xl lg:text-5xl xl:text-6xl text-white font-bold flex-col text-center lg:text-left">
-              <span className="bg-linear-to-r from-[#6938F5] to-[#356BFF] bg-clip-text text-transparent">
+              <span className="text-white sm:bg-linear-to-r sm:from-[#6938F5] sm:to-[#356BFF] sm:bg-clip-text sm:text-transparent">
                 Ferramentas
               </span>{" "}
               online <br />
@@ -98,12 +113,12 @@ export default function Home() {
               </p>
             </div>
 
-            <form className="border border-muted/30 rounded-xl w-75 sm:w-180 lg:w-140 xl:w-190 h-12 items-center flex justify-between bg-card">
-              <div className="flex flex-1 items-center gap-2 px-4">
+            <form className="border border-muted/30 rounded-xl w-[clamp(300px,90vw,760px)] h-12 items-center flex justify-between bg-card">
+              <div className="flex flex-1 items-center gap-2 px-2 sm:px-4">
                 <Search className="text-muted" size={20} />
 
                 <input
-                  className="w-full text-xs sm:text-base outline-0 text-foreground placeholder-muted"
+                  className="w-full text-[clamp(12px,6vw,16px)] outline-0 text-foreground placeholder-muted"
                   type="text"
                   placeholder="Busque por uma ferramenta..."
                 />

@@ -8,7 +8,8 @@ const buttonVariants = cva(
         primary:
           "bg-linear-to-r from-[#6938F5] to-[#356BFF] text-foreground p-2 border border-transparent transition-colors hover:border-white/30",
         secondary: "bg-card text-foreground hover:bg-card-hover",
-        outline: "border border-primary text-primary hover:bg-primary/10 active:scale-95 ",
+        outline:
+          "border border-primary text-primary hover:bg-primary/10 active:scale-95 ",
         ghost: "text-foreground hover:bg-card-hover",
         search:
           "bg-linear-to-r from-[#6938F5] to-[#356BFF] text-foreground p-2 hover:from-[#356BFF] hover:to-[#6938F5]  transition-colors duration-900",
@@ -18,7 +19,7 @@ const buttonVariants = cva(
         md: "px-5 py-2.5 text-base",
         lg: "px-7 py-3 text-lg",
         responsive: "px-3 py-2 text-sm sm:px-5 sm:py-2.5 sm:text-base",
-        search: "px-5 py-3",
+        search: "px-4 py-3 text-md sm:text-base",
       },
       rounded: {
         default: "rounded-lg",
