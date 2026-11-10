@@ -84,8 +84,8 @@ export default function Tools() {
     <div className="bg-linear-to-br min-h-screen flex flex-col from-[#0B1429] to-[#050B1A]">
       <Header page="tools"></Header>
 
-      <main className="flex-1 p-10 flex flex-col gap-30">
-        <section className="flex flex-col items-center sm:items-start gap-10">
+      <main className="flex-1  flex flex-col gap-10">
+        <section className="flex flex-col items-center sm:items-start gap-10 p-10">
           <h1 className="title text-4xl sm:text-6xl lg:text-5xl xl:text-6xl text-white font-bold flex-col text-center lg:text-left">
             <span className="text-white sm:bg-linear-to-r sm:from-[#6938F5] sm:to-[#356BFF] sm:bg-clip-text sm:text-transparent">
               Explore
@@ -109,18 +109,20 @@ export default function Tools() {
             </Button>
           </form>
         </section>
-        
-        <section>
-          {tools.map((tool) => (
-            <ToolCard
-              key={tool.id}
-              name={tool.name}
-              description={tool.description}
-              icon={tool.icon}
-              color="blue"
-              href={tool.href}
-            />
-          ))}
+
+        <section className="flex justify-center items-center">
+          <div className="grid sm:grid-cols-4 grid-cols-2 gap-4">
+            {tools.map((tool) => (
+              <ToolCard
+                key={tool.id}
+                name={tool.name}
+                description={tool.description}
+                icon={tool.icon}
+                color="blue"
+                href={tool.href}
+              />
+            ))}
+          </div>
         </section>
       </main>
       <Footer />
