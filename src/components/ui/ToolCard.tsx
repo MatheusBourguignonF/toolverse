@@ -1,18 +1,12 @@
 import { ArrowRight, LucideIcon } from "lucide-react";
 import { useRef } from "react";
 import gsap from "gsap";
+import Link from "next/link";
 
-interface IProps {
-  title: string;
-  description: string;
-  icon: LucideIcon;
-  color: string;
-}
+export const ToolCard = (props: ITool) => {
+  const { name, description, icon: Icon, color, href } = props;
 
-export const ToolCard = (props: IProps) => {
-  const { title, description, icon: Icon, color } = props;
-
-  const cardRef = useRef<HTMLButtonElement>(null);
+  const cardRef = useRef<HTMLAnchorElement>(null);
 
   function handleMouseEnter() {
     if (!cardRef.current) return;
@@ -33,7 +27,8 @@ export const ToolCard = (props: IProps) => {
   }
 
   return (
-    <button
+    <Link
+      href={href}
       ref={cardRef}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -47,7 +42,7 @@ export const ToolCard = (props: IProps) => {
       </div>
 
       <div className="text-center xl:text-start justify-center flex flex-col gap-2 flex-1">
-        <h3 className="text-foreground font-bold 2xl:text-lg">{title}</h3>
+        <h3 className="text-foreground font-bold 2xl:text-lg">{name}</h3>
 
         <p className="text-muted text-xs 2xl:text-sm">{description}</p>
       </div>
@@ -55,6 +50,6 @@ export const ToolCard = (props: IProps) => {
       <div className="bg-card-hover p-1 rounded-full">
         <ArrowRight className="text-white" size={15} />
       </div>
-    </button>
+    </Link>
   );
 };

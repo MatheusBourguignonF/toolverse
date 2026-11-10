@@ -194,59 +194,67 @@ export default function Home() {
           <div className="flex justify-center">
             <div className="grid sm:grid-cols-4 grid-cols-2 gap-4">
               <ToolCard
-                title="Recortar imagem"
+                name="Recortar imagem"
                 description="Recorte suas imagens com precisão"
                 color="red"
                 icon={Crop}
+                href="/tools/contador-de-caracteres"
               ></ToolCard>
 
               <ToolCard
-                title="Seletor de cores"
+                name="Seletor de cores"
                 description="Acesse o seletor de cores e escolha sua cor de preferência"
                 color="green"
                 icon={Crop}
+                href="/tools/contador-de-caracteres"
               ></ToolCard>
 
               <ToolCard
-                title="Gerador de senhas"
+                name="Gerador de senhas"
                 description="Gere senhas seguras de acordo com informações fornecidas"
                 color="purple"
                 icon={Crop}
+                href="/tools/contador-de-caracteres"
               ></ToolCard>
 
               <ToolCard
-                title="Calculadora Online"
+                name="Calculadora Online"
                 description="Realize cálculos matemáticos básicos e avançados"
                 color="pink"
                 icon={Crop}
+                href="/tools/contador-de-caracteres"
               ></ToolCard>
 
               <ToolCard
-                title="Gerador de QR Code"
+                name="Gerador de QR Code"
                 description="Gere um QR Code de acordo com informações fornecidas"
                 color="blue"
                 icon={Crop}
+                href="/tools/contador-de-caracteres"
               ></ToolCard>
 
               <ToolCard
-                title="Compactador de arquivos"
+                name="Compactador de arquivos"
                 description="Reduz o tamanho de arquivos"
                 color="cyan"
                 icon={Crop}
+                href="/tools/contador-de-caracteres"
               ></ToolCard>
 
               <ToolCard
-                title="Gerador de números"
+                name="Gerador de números"
                 description="Gere números aleatórios de acordo com informações fornecidas"
                 color="orange"
                 icon={Crop}
+                href="/tools/contador-de-caracteres"
               ></ToolCard>
 
               <ToolCard
-                title="Contador de caracteres"
+                name="Contador de caracteres"
                 description="Calcule quantos caracteres existem no texto"
                 color="violet"
                 icon={Crop}
+                href="/tools/contador-de-caracteres"
               ></ToolCard>
             </div>
           </div>
