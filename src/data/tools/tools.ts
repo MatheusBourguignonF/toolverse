@@ -1,4 +1,4 @@
-import { CaseSensitive, WholeWord } from "lucide-react";
+import { ArrowDownAZ, CaseSensitive, WholeWord } from "lucide-react";
 
 export const tools: ITool[] = [
     {   
@@ -14,7 +14,15 @@ export const tools: ITool[] = [
         name: "Converter Maiúscula e Minúscula",
         description: "Converte o texto para letras maiúsculas ou minúsculas.",
         icon: CaseSensitive,
-        color: "red",
+        color: "blue",
         href: "/tools/converter-maiuscula-minuscula",
+    },
+    {
+        id: 3,
+        name: "Ordem alfabética",
+        description: "Coloca uma lista em ordem alfabética.",
+        icon: ArrowDownAZ,
+        color: "blue",
+        href: "/tools/ordem-alfabetica"
     }
 ] 
