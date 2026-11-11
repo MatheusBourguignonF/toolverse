@@ -19,6 +19,7 @@ import Image from "next/image";
 import { useLayoutEffect } from "react";
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 export default function Home() {
   useLayoutEffect(() => {
@@ -181,14 +182,12 @@ export default function Home() {
               Principais Ferramentas
             </h2>
 
-            <Button
-              className="flex gap-2 items-center"
-              variant="outline"
-              rounded="full"
-              size="responsive"
+            <Link
+              className="inline-flex px-3 py-2 text-sm sm:px-5 sm:py-2.5 sm:text-base rounded-full items-center justify-center font-medium transition-all duration-200 hover:cursor-pointer border border-primary text-primary hover:bg-primary/10 active:scale-95 "
+              href="/tools"
             >
               Ver todas as ferramentas <ArrowRight />
-            </Button>
+            </Link>
           </div>
 
           <div className="flex justify-center">
