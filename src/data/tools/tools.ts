@@ -10,7 +10,7 @@ export const tools: ITool[] = [
         href: "/tools/contador-de-caracteres",
     },
     {
-        id: 1,
+        id: 2,
         name: "Converter Maiúscula e Minúscula",
         description: "Converte o texto para letras maiúsculas ou minúsculas.",
         icon: CaseSensitive,
@@ -24,5 +24,15 @@ export const tools: ITool[] = [
         icon: ArrowDownAZ,
         color: "blue",
         href: "/tools/ordem-alfabetica"
-    }
+
+
+    },
+    {
+        id: 4,
+        name: "Consultar salário mínimo",
+        description: "Consulte o valor do salário mínimo atual e veja o histórico de reajustes.",
+        icon: CaseSensitive,
+        color: "green",
+        href: "/tools/salario-minimo",
+    },
 ] 
